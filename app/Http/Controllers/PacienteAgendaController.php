@@ -76,7 +76,7 @@ class PacienteAgendaController extends Controller
        $agenda = $paciente->agendas()->create($data);
        $agenda->exames()->attach($request->exames);
 
-
+//teste updater
         return redirect()->route('paciente.agenda.index', $paciente->id);
 
     }
