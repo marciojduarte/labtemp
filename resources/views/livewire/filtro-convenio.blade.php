@@ -7,7 +7,7 @@
 </select>
 <br/>
 
-<select class="js-data-placeholder-single js-states form-control" name="dataAgendamento">
+<select class="js-data-placeholder-single js-states form-control" name="calendario_id">
     <option selected>Selecione a Data</option>
 @foreach ($calendarios as $calendario)
     <option value="{{ $calendario->id }}">{{ \Carbon\Carbon::parse($calendario->data)->format('d/m/Y')}} - {{ $calendario->convenio->name }}</option>

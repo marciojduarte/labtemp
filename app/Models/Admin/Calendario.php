@@ -13,5 +13,9 @@ class Calendario extends Model
     {
         return $this->belongsTo('App\Models\Admin\convenio');
     }
+    public function agendas()
+    {
+        return $this->hasmMany('App\Models\Admin\Agenda');
+    }
 
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Agenda extends Model
 {
-    protected $fillable = ['paciente_id','solicitante_id','convenio_id','convenio_id','user_id','dataAgendamento'];
+    protected $fillable = ['paciente_id','solicitante_id','convenio_id','convenio_id','user_id','calendario_id'];
 
     public function paciente()
     {
@@ -25,6 +25,10 @@ class Agenda extends Model
     public function exames()
     {
         return $this->belongsToMany('App\Models\Admin\Exame');
+    }
+    public function calendario()
+    {
+        return $this->belongsTo('App\Models\Admin\Calendario');
     }
 
     // public function getdataAgendamento($value){

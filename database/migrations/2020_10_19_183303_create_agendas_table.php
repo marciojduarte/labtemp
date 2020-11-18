@@ -23,7 +23,8 @@ class CreateAgendasTable extends Migration
             $table->foreign('convenio_id')->references('id')->on('convenios');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->date('dataAgendamento');
+            $table->unsignedBigInteger('calendario_id');
+            $table->foreign('calendario_id')->references('id')->on('calendarios');
             $table->timestamps();
         });
     }
