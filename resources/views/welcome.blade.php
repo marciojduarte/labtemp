@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    @livewire('filtro-convenio')
+    @livewire('calendario-componente')
 @stop
 
 @section('css')
