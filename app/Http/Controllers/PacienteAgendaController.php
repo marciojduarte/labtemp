@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin\Calendario;
-use App\Models\Admin\Exame;
+use App\Events\PacienteAgendado;
 use Illuminate\Http\Request;
-use App\Models\Admin\Convenio;
-use App\Models\Admin\Paciente;
-use App\Models\Admin\Solicitante;
+use App\Models\Admin\
+{
+    Solicitante,
+    Calendario,
+    Exame,
+    Convenio,
+    Paciente
+};
 
 class PacienteAgendaController extends Controller
 {
@@ -75,6 +79,7 @@ class PacienteAgendaController extends Controller
        $data['user_id']= 1;
        $agenda = $paciente->agendas()->create($data);
        $agenda->exames()->attach($request->exames);
+       event(new PacienteAgendado($agenda));
 
 //teste updater
         return redirect()->route('paciente.agenda.index', $paciente->id);
