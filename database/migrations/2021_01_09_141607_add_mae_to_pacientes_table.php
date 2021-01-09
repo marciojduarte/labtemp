@@ -14,7 +14,7 @@ class AddMaeToPacientesTable extends Migration
     public function up()
     {
         Schema::table('pacientes', function (Blueprint $table) {
-            $table->integer('mae');
+            $table->string('mae');
         });
     }
 

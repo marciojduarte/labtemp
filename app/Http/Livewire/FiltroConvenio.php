@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Admin\Calendario;
-use App\Models\Admin\Convenio;
 use Livewire\Component;
+use App\Models\Admin\Agenda;
+use App\Models\Admin\Convenio;
+use Illuminate\Support\Carbon;
+use App\Models\Admin\Calendario;
 
 class FiltroConvenio extends Component
 {
@@ -15,7 +17,10 @@ class FiltroConvenio extends Component
         $convenios = Convenio::all();
 
         return view('livewire.filtro-convenio', [
-            'calendarios'=> Calendario::where('convenio_id', $this->filtro)->get(),
+            'calendarios'=> Calendario::where('convenio_id', $this->filtro)
+                            ->Where('data', '>=', Carbon::now()) //tambem pode usar  date("Y-m-d")
+                            //->Where('atendimento','<=',count(Agenda::where('calendario_id')))
+                            ->get(),
             'convenios' => $convenios
         ]);
     }
