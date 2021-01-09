@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paciente extends Model
 {
-protected $fillable = ['name','dataNascimento','sus'];
+protected $fillable = ['name','mae','dataNascimento','sus'];
 
 
     public function agendas()

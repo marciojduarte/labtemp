@@ -14,6 +14,9 @@
                     <strong>Nome: </strong> {{ $paciente->name }}
                 </li>
                 <li>
+                    <strong>Nome da Mae: </strong> {{ $paciente->mae }}
+                </li>
+                <li>
                     <strong>Data de Nascimentos: </strong> {{ $paciente->dataNascimento }}
                 </li>
                 <li>

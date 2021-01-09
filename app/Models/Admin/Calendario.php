@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Calendario extends Model
 {
-    protected $fillable = ['data','convenio_id'];
+    protected $fillable = ['data','convenio_id','atendimento'];
 
     public function convenio()
     {
