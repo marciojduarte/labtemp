@@ -23,7 +23,7 @@ class ExameController extends Controller
      */
     public function index()
     {
-        $exames = $this->repository->orderBy('name', 'asc')->paginate();
+        $exames = $this->repository->orderBy('name', 'asc')->get();
 
         return view('admin.pages.exames.index', compact('exames'));
     }

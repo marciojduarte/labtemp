@@ -8,20 +8,16 @@
         <li class="breadcrumb-item active"><a href="{{ route('exames.index') }}" class="active">Exames</a></li>
     </ol>
 
-    <h1>Exames <a href="{{ route('exames.create') }}" class="btn btn-dark">ADD</a></h1>
+    <h1>Exames <a href="{{ route('exames.create') }}" class="btn btn-dark">Cadastra</a></h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <form action="{{ route('exames.search') }}" method="POST" class="form form-inline">
-                @csrf
-                <input type="text" name="filter" placeholder="Filtro" class="form-control" value="{{ $filters['filter'] ?? '' }}">
-                <button type="submit" class="btn btn-dark">Filtrar</button>
-            </form>
+
         </div>
         <div class="card-body">
-            <table class="table table-sm">
+            <table class="table table-sm" id="datatable">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -37,7 +33,6 @@
                             <td style="width=10px;">
                                 <a href="{{ route('exames.edit', $exame->id) }}" class="btn btn-info">Edit</a>
                                 <a href="{{ route('exames.show', $exame->id) }}" class="btn btn-warning">VER</a>
-                                <a href="{{ route('exames.pacientes', $exame->id) }}" class="btn btn-info"><i class="fas fa-address-book"></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -45,11 +40,20 @@
             </table>
         </div>
         <div class="card-footer">
-            @if (isset($filters))
-                {!! $exames->appends($filters)->links() !!}
-            @else
-                {!! $exames->links() !!}
-            @endif
         </div>
     </div>
 @stop
+@section('js')
+<script>
+
+$(document).ready(function() {
+    $('#datatable').DataTable( {
+        "ordering": false,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
+        }
+    } );
+} );
+</script>
+@stop
+

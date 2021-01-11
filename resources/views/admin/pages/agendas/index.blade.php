@@ -36,7 +36,7 @@
                                 {{ $agenda->solicitante->name }}
                             </td>
                             <td>
-                                {{ $agenda->dataAgendamento }}
+                                {{ \Carbon\Carbon::parse($agenda->calendario->data )->format('d/m/Y')}}
                             </td>
                             <td >
                                 {{ $agenda->paciente->name }}

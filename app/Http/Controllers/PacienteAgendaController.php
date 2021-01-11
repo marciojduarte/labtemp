@@ -53,7 +53,7 @@ class PacienteAgendaController extends Controller
         $solicitantes = Solicitante::all();
         $convenios = Convenio::all();
         $exames = Exame::all();
-        $calendarios = Calendario::all();
+        //$calendarios = Calendario::all();
 
 
         return view('admin.pages.pacientes.agendas.create', [
@@ -61,7 +61,7 @@ class PacienteAgendaController extends Controller
             'solicitantes'=>$solicitantes,
             'convenios'=> $convenios,
             'exames'=> $exames,
-            'calendarios' => $calendarios
+            //'calendarios' => $calendarios
 
         ]);
     }
@@ -79,8 +79,6 @@ class PacienteAgendaController extends Controller
        $data['user_id']= 1;
        $agenda = $paciente->agendas()->create($data);
        $agenda->exames()->attach($request->exames);
-       event(new PacienteAgendado($agenda));
-
 //teste updater
         return redirect()->route('paciente.agenda.index', $paciente->id);
 

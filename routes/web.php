@@ -29,19 +29,7 @@ Route::get('admin/index', function () {
         'as' => 'agenda'
     ])->middleware('auth');
 
-
-
-
-    // /** Deletar
-    //  * Exame x Paciente
-    //  */
-    // Route::get('pacientes/{id}/exame/{idexame}/detach', 'ExamePacienteController@detachexamepaciente')->name('pacientes.exame.detach');
-    // Route::post('pacientes/{id}/exames', 'ExamePacienteController@attachexamespaciente')->name('pacientes.exames.attach');
-    // Route::any('pacientes/{id}/exames/create', 'ExamePacienteController@examesAvailable')->name('pacientes.exames.available');
-    // Route::get('pacientes/{id}/exames', 'ExamePacienteController@exames')->name('pacientes.exames');
-    // Route::get('exames/{id}/paciente', 'ExamePacienteController@pacientes')->name('exames.pacientes');
-
-    /**
+      /**
      * Routes exames
      */
     Route::any('exames/search', 'ExameController@search')->name('exames.search');

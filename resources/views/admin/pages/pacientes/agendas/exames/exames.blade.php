@@ -45,7 +45,7 @@
         </div>
         <div class="card-footer">
 
-        <div class="small-box bg-info">
+        <div class="small-box bg-info" >
             <div class="inner">
                 <h3> R$ {{ number_format($totalExames, 2, ',', '.') }}</h3>
                 <p>Total</p>

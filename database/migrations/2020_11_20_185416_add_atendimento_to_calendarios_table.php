@@ -14,6 +14,7 @@ class AddAtendimentoToCalendariosTable extends Migration
     public function up()
     {
         Schema::table('calendarios', function (Blueprint $table) {
+            $table->integer('limite');
             $table->integer('atendimento');
         });
     }
