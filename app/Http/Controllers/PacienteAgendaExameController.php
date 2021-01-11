@@ -6,7 +6,7 @@ use App\Models\Admin\Exame;
 use App\Models\Admin\Agenda;
 use Illuminate\Http\Request;
 
-class AgendaExameController extends Controller
+class PacienteAgendaExameController extends Controller
 {
     private $exame, $agenda;
 
