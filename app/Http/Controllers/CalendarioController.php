@@ -68,9 +68,16 @@ class CalendarioController extends Controller
      * @param  \App\Calendario  $calendario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Calendario $calendario)
+    public function edit( $id)
     {
-        
+        $calendario = $this->repository::findOrFail($id);
+        if(!$calendario)
+        redirect()->back();
+
+        return view('admin.pages.calendarios.edit',[
+            'calendario' => $calendario,
+            'convenios' => Convenio::all()
+        ]);
     }
 
     /**
