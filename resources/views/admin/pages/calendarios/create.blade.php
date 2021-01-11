@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Cadastrar Nova Agenda')
+@section('title', 'Cadastrar Nova Data')
 
 @section('content_header')
-    <h1>Cadastrar Nova</h1>
+    <h1>Cadastrar Nova Data</h1>
 @stop
 
 @section('content')

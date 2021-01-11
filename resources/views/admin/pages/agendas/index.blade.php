@@ -17,7 +17,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table class="table table-hover table-sm">
+            <table class="table table-hover table-sm" id="datatable">
                 <thead>
                     <tr>
                         <th>Convênio</th>
@@ -48,16 +48,21 @@
 
         </div>
         <div class="card-footer">
-
-            @if (isset($filters))
-                {!! $agendas->appends($filters)->links() !!}
-            @else
-                {!! $agendas->links() !!}
-            @endif
         </div>
     </div>
 @stop
 
 @section('js')
+<script>
 
+$(document).ready(function() {
+    $('#datatable').DataTable( {
+        "ordering": false,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
+        }
+    } );
+} );
+</script>
 @stop
+

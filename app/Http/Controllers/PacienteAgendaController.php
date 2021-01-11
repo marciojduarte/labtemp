@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Admin\
 {
     Solicitante,
-    Calendario,
     Exame,
     Convenio,
     Paciente

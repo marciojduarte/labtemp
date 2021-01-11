@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', "Detalhes da permissão {$exame->name}")
+@section('title', "Detalhes da Exame {$exame->name}")
 
 @section('content_header')
-    <h1>Detalhes da permissão <b>{{ $exame->name }}</b></h1>
+    <h1>Detalhes da Exame <b>{{ $exame->name }}</b></h1>
 @stop
 
 @section('content')
@@ -26,7 +26,7 @@
             <form action="{{ route('exames.destroy', $exame->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> DELETAR O PERFIL: {{ $exame->name }}</button>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> DELETAR O EXAME: {{ $exame->name }}</button>
             </form>
         </div>
     </div>

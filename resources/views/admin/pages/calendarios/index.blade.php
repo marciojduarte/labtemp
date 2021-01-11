@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table class="table table-hover table-sm">
+            <table class="table table-hover table-sm" id="datatable">
                 <thead>
                     <tr>
                         <th>Convênio</th>
@@ -31,11 +31,15 @@
                                 {{ $calendario->atendimento - $calendario->limite }}
                             </td>
                             <td style="width=10px;">
-                                <form action="{{ route('calendarios.destroy',$calendario->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                </form>
+                                <div class="btn-group float-right">
+                                    <form action="{{ route('calendarios.destroy',$calendario->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                    <a class="btn btn-sm btn-info" href="{{route('calendarios.edit', $calendario->id)}}"><i class="far fa-edit"></i></a>
+
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -50,5 +54,16 @@
 @stop
 
 @section('js')
+<script>
 
+$(document).ready(function() {
+    $('#datatable').DataTable( {
+        "ordering": false,
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
+        }
+    } );
+} );
+</script>
 @stop
+

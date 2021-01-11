@@ -1,18 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', "Editar a Agenda {$paciente->name}")
+@section('title', "Editar a calendario {$calendario->data}")
 
 @section('content_header')
-    <h1>Editar o Perfil {{ $paciente->name }}</h1>
+    <h1>Editar o Calendario {{ $calendario->data }}</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('paciente.agendas.update', $paciente->id) }}" class="form" method="POST">
+            <form action="{{ route('calendarios.update', $calendario->id) }}" class="form" method="POST">
                 @method('PUT')
 
-                @include('admin.pages.agendas._partials.form')
+                @include('admin.pages.calendarios._partials.form')
             </form>
         </div>
     </div>

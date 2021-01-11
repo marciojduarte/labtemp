@@ -49,7 +49,6 @@ Route::get('admin/index', function () {
     /**
      * Routes calendarios
      */
-    Route::any('calendarios/search', 'CalendarioController@search')->name('calendarios.search');
     Route::resource('calendarios', 'CalendarioController');
 
 Auth::routes();

@@ -23,12 +23,9 @@ class CalendarioController extends Controller
     public function index()
     {
         $calendarios = $this->repository->latest()->paginate();
-        //$disponiveis = $this->repository->diff('atendimento','limite');
-
         return view('admin.pages.calendarios.index',[
             'calendarios'=>$calendarios,
-            //'disponiveis'=>$disponiveis
-            ]);
+        ]);
     }
 
     /**
@@ -73,7 +70,7 @@ class CalendarioController extends Controller
      */
     public function edit(Calendario $calendario)
     {
-        //
+        
     }
 
     /**

@@ -24,7 +24,7 @@
                         <th>Convênio</th>
                         <th>Solicitante</th>
                         <th>Data</th>
-                        <th width="270"php>Ações</th>
+                        <th class= "float-right">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,13 +39,15 @@
                             <td>
                                 {{ \Carbon\Carbon::parse($agenda->calendario->data)->format('d/m/Y')}}
                             </td>
-                            <td inli>
+                            <td>
+                                <div class="btn-group float-right">
                                 <a href="{{ route('agenda.exames.index', $agenda->id) }}" class="btn btn-warning"><i class="fas fa-eye"></i></a>
                                 <form action="{{ route('paciente.agenda.destroy', [$paciente->id, $agenda->id]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                 </form>
+                            </div>
                             </td>
                         </tr>
                     @endforeach

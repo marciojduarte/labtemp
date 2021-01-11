@@ -13,15 +13,12 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">
-
-        </div>
         <div class="card-body">
             <table class="table table-sm" id="datatable">
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th width="250">Ações</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,16 +27,14 @@
                             <td>
                                 {{ $exame->name }}
                             </td>
-                            <td style="width=10px;">
-                                <a href="{{ route('exames.edit', $exame->id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('exames.show', $exame->id) }}" class="btn btn-warning">VER</a>
+                            <td class="float-right">
+                                <a href="{{ route('exames.edit', $exame->id) }}" class="btn btn-sm btn-info">Edit</a>
+                                <a href="{{ route('exames.show', $exame->id) }}" class="btn btn-sm btn-warning">VER</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="card-footer">
         </div>
     </div>
 @stop

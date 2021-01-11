@@ -23,9 +23,7 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        $agendas = $this->repository->latest()->paginate();
-
-
+        $agendas = $this->repository->latest()->get();
         return view('admin.pages.agendas.index', compact('agendas'));
     }
 
@@ -36,18 +34,18 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        $pacientes = Paciente::all();
-        $solicitantes = Solicitante::all();
-        $convenios = Convenio::all();
-        $exames = Exame::all();
+        // $pacientes = Paciente::all();
+        // $solicitantes = Solicitante::all();
+        // $convenios = Convenio::all();
+        // $exames = Exame::all();
 
 
-        return view('admin.pages.agendas.create', [
-            'pacientes' =>$pacientes,
-            'solicitantes'=>$solicitantes,
-            'convenios'=> $convenios,
-            'exames'=> $exames
-        ]);
+        // return view('admin.pages.agendas.create', [
+        //     'pacientes' =>$pacientes,
+        //     'solicitantes'=>$solicitantes,
+        //     'convenios'=> $convenios,
+        //     'exames'=> $exames
+        // ]);
     }
 
     /**
@@ -128,25 +126,4 @@ class AgendaController extends Controller
         return redirect()->route('agendas.index');
     }
 
-    /**
-     * Search results
-     *
-     * @param  Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function search(Request $request)
-    {
-        $filters = $request->only('filter');
-
-        $agendas = $this->repository
-                            ->where(function($query) use ($request) {
-                                if ($request->filter) {
-                                    $query->where('sus', $request->filter);
-                                    $query->orWhere('name', 'LIKE', "%{$request->filter}%");
-                                }
-                            })
-                            ->paginate();
-
-        return view('admin.pages.agendas.index', compact('agendas', 'filters'));
-    }
 }
