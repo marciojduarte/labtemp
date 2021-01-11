@@ -18,7 +18,7 @@ class AgendaExameTable extends Migration
             $table->unsignedBigInteger('exame_id');
             $table->unsignedBigInteger('agenda_id');
             $table->foreign('exame_id')->references('id')->on('exames');
-            $table->foreign('agenda_id')->references('id')->on('agendas');
+            $table->foreign('agenda_id')->references('id')->on('agendas')->onDelete('cascade');
             $table->timestamps();
         });
     }

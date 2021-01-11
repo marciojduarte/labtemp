@@ -27,7 +27,7 @@ Route::get('admin/index', function () {
      */
     Route::resource('agenda{id}/exames', 'AgendaExameController',[
         'as' => 'agenda'
-    ])->middleware('auth');
+    ]);
 
       /**
      * Routes exames

@@ -78,6 +78,7 @@ class PacienteAgendaController extends Controller
        $data=$request->all();
        $data['user_id']= 1;
        $agenda = $paciente->agendas()->create($data);
+       $calendario = $agenda->calendario()->increment('limite',1);
        $agenda->exames()->attach($request->exames);
 //teste updater
         return redirect()->route('paciente.agenda.index', $paciente->id);
@@ -132,8 +133,8 @@ class PacienteAgendaController extends Controller
          if (!$paciente || !$agenda) {
             return redirect()->back();
          }
-
-       $agenda->delete();
+        $calendario = $agenda->calendario()->decrement('limite',1);
+        $agenda->delete();
 
         return redirect()->route('paciente.agenda.index', $paciente->id);
     }

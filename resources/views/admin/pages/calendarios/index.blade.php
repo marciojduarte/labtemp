@@ -3,7 +3,7 @@
 @section('title', "Calendário")
 @section('content_header')
     <h1>Calendário</h1>
-    <a href="{{ route('calendarios.create')}}" class="btn btn-dark">Novo Data</a>
+    <a href="{{ route('calendarios.create')}}" class="btn btn-dark">Nova Data</a>
 @stop
 
 @section('content')
@@ -14,6 +14,7 @@
                     <tr>
                         <th>Convênio</th>
                         <th>Data</th>
+                        <th>Disponívies</th>
                         <th width="50">Ações</th>
                     </tr>
                 </thead>
@@ -25,6 +26,9 @@
                             </td>
                             <td>
                                 {{ \Carbon\Carbon::parse($calendario->data)->format('d/m/Y')}}
+                            </td>
+                            <td>
+                                {{ $calendario->atendimento - $calendario->limite }}
                             </td>
                             <td style="width=10px;">
                                 <form action="{{ route('calendarios.destroy',$calendario->id) }}" method="post">
