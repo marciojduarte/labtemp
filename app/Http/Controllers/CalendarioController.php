@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class CalendarioController extends Controller
 {
     protected $repository;
+    protected $editMode = false;
 
     public function __construct(Calendario $calendario)
     {
@@ -25,6 +26,7 @@ class CalendarioController extends Controller
         $calendarios = $this->repository->latest()->paginate();
         return view('admin.pages.calendarios.index',[
             'calendarios'=>$calendarios,
+            'convenios'=>Convenio::all()
         ]);
     }
 
@@ -73,11 +75,13 @@ class CalendarioController extends Controller
         $calendario = $this->repository::findOrFail($id);
         if(!$calendario)
         redirect()->back();
+        $this->editMode=true;
+        return $this->index();
 
-        return view('admin.pages.calendarios.edit',[
-            'calendario' => $calendario,
-            'convenios' => Convenio::all()
-        ]);
+        // return view('admin.pages.calendarios.edit',[
+        //     'calendario' => $calendario,
+        //     'convenios' => Convenio::all()
+        // ]);
     }
 
     /**
@@ -87,9 +91,11 @@ class CalendarioController extends Controller
      * @param  \App\Calendario  $calendario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Calendario $calendario)
+    public function update(Request $request, $id)
     {
-        //
+        $this->repository::findOrFail($id)->update($request->all());
+        $this->editMode=false;
+        return $this->index();
     }
 
     /**

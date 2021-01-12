@@ -8,6 +8,13 @@
 
 @section('content')
     <div class="card">
+        <div class="card-header bg-light">
+                @if (@isset($editMode))
+                @include('admin.pages.calendarios.update')
+                @else
+                @include('admin.pages.calendarios.create')
+                @endif
+        </div>
         <div class="card-body">
             <table class="table table-hover table-sm" id="datatable">
                 <thead>
@@ -45,10 +52,6 @@
                     @endforeach
                 </tbody>
             </table>
-
-        </div>
-        <div class="card-footer">
-                {!! $calendarios->links() !!}
         </div>
     </div>
 @stop
