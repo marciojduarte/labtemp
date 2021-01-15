@@ -31,4 +31,21 @@ class Agenda extends Model
         return $this->belongsToMany('App\Models\Admin\Exame');
     }
 
+    public function examesAvailable($filter = null)
+    {
+        $exames = exame::whereNotIn('exames.id', function($query) {
+            $query->select('agenda_exame.exame_id');
+            $query->from('agenda_exame');
+            $query->whereRaw("agenda_exame.agenda_id={$this->id}");
+        })
+        ->where(function ($queryFilter) use ($filter) {
+            if ($filter)
+                $queryFilter->where('exames.name', 'LIKE', "%{$filter}%");
+        })
+        ->paginate();
+
+        return $exames;
+    }
+}
+
 }

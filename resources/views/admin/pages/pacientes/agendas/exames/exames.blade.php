@@ -10,7 +10,7 @@
 
     <h1>Exames do paciente <strong>{{ $agenda->paciente->name }} - {{ $agenda->convenio->name }}</strong></h1>
 
-    {{-- <a href="{{ route('pacientes.exames.available', $paciente->id) }}" class="btn btn-dark">Adicionar Exames</a> --}}
+    <a href="{{ route('agenda.exames.create', $agenda->id) }}" class="btn btn-dark">Adicionar Exames</a>
 
 @stop
 
@@ -35,7 +35,11 @@
                                 R$ {{ number_format($exame->price, 2, ',', '.') }}
                             </td>
                             <td style="width=10px;">
-                                {{-- <a href="{{ route('pacientes.exame.detach', [$paciente->id, $exame->id]) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a> --}}
+                                <form action="{{ route('agenda.exames.destroy', [$agenda->id, $exame->id]) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

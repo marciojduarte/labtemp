@@ -125,8 +125,7 @@ class PacienteAgendaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($idPaciente, $idAgenda)
-    {
-        $paciente = Paciente::find($idPaciente);
+    {   $paciente = Paciente::find($idPaciente);
         $agenda = $paciente->agendas()->find($idAgenda);
 
          if (!$paciente || !$agenda) {

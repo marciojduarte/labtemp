@@ -25,7 +25,7 @@ Route::get('admin/index', function () {
     /**
      * Agenda x Exames
      */
-    Route::resource('agenda{id}/exames', 'PacienteAgendaExameController',[
+    Route::resource('agenda/{id}/exames', 'PacienteAgendaExameController',[
         'as' => 'agenda'
     ]);
 

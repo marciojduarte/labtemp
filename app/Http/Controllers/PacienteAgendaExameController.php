@@ -40,9 +40,19 @@ class PacienteAgendaExameController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idAgenda)
     {
-        //
+        $agenda = $this->agenda->findOrFail($idAgenda);
+
+        $exames = Exame::all();
+        if (!$agenda) {
+            return redirect()->back();
+        }
+
+        return view('admin.pages.pacientes.agendas.exames.create',[
+            'agenda'=>$agenda,
+            'exames'=>$exames
+        ]);
     }
 
     /**
@@ -51,9 +61,21 @@ class PacienteAgendaExameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $idAgenda)
     {
-        //
+        $agenda = $this->agenda->findOrFail($idAgenda);
+        if (!$agenda) {
+            return redirect()->back();
+        }
+
+        // if (!$request->exames || count($request->exames) == 0) {
+        //     return redirect()
+        //                 ->back()
+        //                 ->with('info', 'Precisa escolher pelo menos uma exame');
+        // }
+        $agenda->exames()->attach($request->exames);
+        $idAgenda = $agenda->id;
+        return $this->index($idAgenda);
     }
 
     /**
@@ -96,8 +118,16 @@ class PacienteAgendaExameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($idAgenda, $idExame)
+    {   $agenda = $this->agenda->find($idAgenda);
+        $exame = $this->exame->find($idExame);
+
+        if (!$agenda || !$exame) {
+            return redirect()->back();
+        }
+
+        $agenda->exames()->detach($exame);
+
+        return redirect()->back();
     }
 }
