@@ -12,8 +12,9 @@ class CalendarioComponente extends Component
     public function render()
     {
         return view('livewire.calendario-componente', [
-            'convenios' => Convenio::all(),
-            'calendarios' => Calendario::orderBy('data')->get(),
+                    'calendarios' => Calendario::orderBy('data')
+                                                ->where('data','>=', date("Y-m-d"))
+                                                ->get(),
         ]);
     }
 }

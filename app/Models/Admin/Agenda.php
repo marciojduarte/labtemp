@@ -47,5 +47,3 @@ class Agenda extends Model
         return $exames;
     }
 }
-
-}

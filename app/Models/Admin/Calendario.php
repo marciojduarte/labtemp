@@ -15,7 +15,7 @@ class Calendario extends Model
     }
     public function agendas()
     {
-        return $this->hasmMany('App\Models\Admin\Agenda');
+        return $this->hasMany('App\Models\Admin\Agenda');
     }
 
 }

@@ -1,36 +1,23 @@
-<div>
-    <form>
-        <div class="form-row">
-          <div class="col">
-            <div class="form-group">
-            <select class="form-control" name="convenio_id">
-                <option selected>Selecione o Convenio</option>
-                @foreach($convenios as $convenio)
-                <option value={{$convenio ->id}}>{{$convenio ->name}}</option>
-                @endforeach
-            </select>
+
+<div class="row">
+@foreach($calendarios as $calendario)
+    <div class="col">
+        <div class="card">
+            <div class="card-header text-center">
+                <h5>{{ $calendario ->convenio->name }}</h5>
+                <p class="card-text"> {{ \Carbon\Carbon::parse($calendario->data)->format('d/m/Y')}}</p>
             </div>
-          </div>
-          <div class="col">
-            <input type="date" class="form-control" placeholder="Data da Coleta" name="data">
-          </div>
+            <div class="card-body">
+            @foreach($calendario->agendas as $agenda)
+                <p class="card-text">{{ $agenda->paciente->name }}</p>
+            @endforeach
+            </div>
+            <div class="card-footer text-muted">
+            Footer
+            </div>
         </div>
-      </form>
-
-    @foreach($calendarios as $calendario)
-
-   <div class="card-group">
-       <div class="card">
-
-           <div class="card-body">
-               <h4 class="card-title">{{ $calendario ->convenio->name }}</h4>
-               <p class="card-text">{{ $calendario ->data }}</p>
-           </div>
-       </div>
-
-   </div>
-
-    @endforeach
-
+    </div>
+@endforeach
 </div>
+
 
