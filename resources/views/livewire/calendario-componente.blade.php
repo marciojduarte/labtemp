@@ -1,7 +1,7 @@
 
 <div class="row">
 @foreach($calendarios as $calendario)
-    <div class="col">
+    <div class="col-sm-4">
         <div class="card">
             <div class="card-header text-center">
                 <h5>{{ $calendario ->convenio->name }}</h5>

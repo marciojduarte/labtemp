@@ -2,7 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Admin\Paciente;
+use App\Models\Admin\Agenda;
+use App\Models\Admin\Paciente;
 use Faker\Generator as Faker;
 
 $factory->define(Paciente::class, function (Faker $faker) {
@@ -10,3 +11,4 @@ $factory->define(Paciente::class, function (Faker $faker) {
         //
     ];
 });
+

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Admin\Calendario;
 
 class CalendarioSeeder extends Seeder
 {
@@ -11,6 +12,7 @@ class CalendarioSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Calendario::class, 50)->create();
+
     }
 }
