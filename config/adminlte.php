@@ -263,6 +263,11 @@ return [
             'url'  => 'agendas',
             'icon' => 'fas fa-fw fa-book',
         ],
+        [
+            'text' => 'Convenio',
+            'url'  => 'convenios',
+            'icon' => 'fas fa-fw fa-book',
+        ],
 
     ],
 

@@ -23,7 +23,9 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        $agendas = $this->repository->latest()->get();
+        $agendas = $this->repository->latest()
+                                         //   ->groupBy('calendario_id')
+                                            ->get();
         return view('admin.pages.agendas.index', compact('agendas'));
     }
 

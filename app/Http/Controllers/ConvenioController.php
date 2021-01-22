@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin\Convenio;
+use App\Models\Admin\Convenio;
 use Illuminate\Http\Request;
 
 class ConvenioController extends Controller
-{
+{   protected $repository;
+
+    public function __construct(Convenio $exame)
+    {
+        $this->repository = $exame;
+
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class ConvenioController extends Controller
      */
     public function index()
     {
-        //
+        $convenios = $this->repository->orderBy('name', 'asc')->get();
+
+        return view('admin.pages.convenios.index', compact('convenios'));
     }
 
     /**

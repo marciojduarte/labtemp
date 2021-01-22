@@ -42,6 +42,12 @@ Route::get('admin/index', function () {
     Route::resource('pacientes', 'PacienteController');
 
     /**
+     * Routes convenios
+     */
+    Route::any('convenios/search', 'ConvenioController@search')->name('convenios.search');
+    Route::resource('convenios', 'ConvenioController');
+
+    /**
      * Routes agendas
      */
     Route::any('agendas/search', 'AgendaController@search')->name('agendas.search');
