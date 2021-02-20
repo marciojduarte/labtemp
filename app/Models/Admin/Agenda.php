@@ -28,7 +28,7 @@ class Agenda extends Model
 
     public function exames()
     {
-        return $this->belongsToMany('App\Models\Admin\Exame');
+        return $this->belongsToMany('App\Models\Admin\AgendaExame');
     }
 
     public function examesAvailable($filter = null)

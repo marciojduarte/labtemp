@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\Admin;
+use App\Models\Admin\Agenda;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +16,7 @@ class Calendario extends Model
     }
     public function agendas()
     {
-        return $this->hasMany('App\Models\Admin\Agenda');
+        return $this->hasMany(Agenda::class);
     }
 
 }

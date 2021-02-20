@@ -59,9 +59,15 @@ class CalendarioController extends Controller
      * @param  \App\Calendario  $calendario
      * @return \Illuminate\Http\Response
      */
-    public function show(Calendario $calendario)
+    public function show($id)
     {
-        //
+        $calendario = Calendario::find($id);
+        $agendas = $calendario->agendas()->get();
+       // $totalExames = $agendas->exames()->sum('price');
+        return view('admin\pages\agendas\index',[
+            'agendas'=>$agendas,
+           // 'totalExames'=>$totalExames
+        ]);
     }
 
     /**

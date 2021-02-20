@@ -15,6 +15,6 @@ class Exame extends Model
 
     public function agendas()
     {
-        return $this->belongsToMany('App\Models\Admin\Agenda');
+        return $this->belongsToMany('App\Models\Admin\AgendaExame');
     }
 }

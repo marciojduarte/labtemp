@@ -20,15 +20,20 @@
             <table class="table table-hover table-sm" id="datatable">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Convênio</th>
                         <th>Solicitante</th>
                         <th>Data</th>
                         <th>Paciente</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($agendas as $agenda)
                         <tr>
+                            <td>
+                                {{ $agenda->id }}
+                            </td>
                             <td>
                                 {{ $agenda->convenio->name }}
                             </td>
@@ -39,7 +44,12 @@
                                 {{ \Carbon\Carbon::parse($agenda->calendario->data )->format('d/m/Y')}}
                             </td>
                             <td >
-                                {{ $agenda->paciente->name }}
+                                <a href="{{ route('agenda.exames.index', $agenda->id) }}">{{ $agenda->paciente->name }}</a>
+
+                            </td>
+                            <td >
+                                {{ $agenda->exames()->id }}
+                                {{-- <h3> R$ {{ number_format($agenda->exames()->sum('price');, 2, ',', '.') }}</h3> --}}
                             </td>
                         </tr>
                     @endforeach

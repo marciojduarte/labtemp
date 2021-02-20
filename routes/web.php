@@ -12,6 +12,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/teste', function () {
+   // return App\Models\Admin\Agenda::all();
+   //$data = App\Models\Admin\Calendario::Where('data','LIKE',"2021-07-%")->Where('convenio_id','1')->get();
+   $data = App\Models\Admin\Calendario::find('1');
+   //$agendas = $data->agendas()->get();
+   $agendas = $data->agendas()->find('6');
+   $paciente = $agendas->paciente()->get();
+    return $data;
+    $paciente;
+    //return App\Models\Admin\Calendario::count('data');
+    // $totalPaciente = App\Models\Admin\Agenda::all();
+    // $agendaExame = $totalPaciente->exame();
+    // return $agendaExame;
+    // //return $totalPaciente;
+});
+
 Route::get('admin/index', function () {
     return view('admin.index');
 })->name('admin.index');
@@ -25,7 +41,7 @@ Route::get('admin/index', function () {
     /**
      * Agenda x Exames
      */
-    Route::resource('agenda/{id}/exames', 'PacienteAgendaExameController',[
+    Route::resource('agenda/{id}/exames', 'AgendaExameController',[
         'as' => 'agenda'
     ]);
 

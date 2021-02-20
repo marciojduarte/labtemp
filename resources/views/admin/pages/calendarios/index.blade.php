@@ -29,7 +29,8 @@
                     @foreach ($calendarios as $calendario)
                         <tr>
                             <td>
-                                {{ $calendario->convenio->name }}
+                                <a href="{{ route('calendarios.show',$calendario->id)}}"> {{ $calendario->convenio->name }}</a>
+
                             </td>
                             <td>
                                 {{ \Carbon\Carbon::parse($calendario->data)->format('d/m/Y')}}
