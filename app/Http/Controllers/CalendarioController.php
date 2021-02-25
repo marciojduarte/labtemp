@@ -23,7 +23,7 @@ class CalendarioController extends Controller
      */
     public function index()
     {
-        $calendarios = $this->repository->latest()->paginate();
+        $calendarios = $this->repository->latest()->get();
         return view('admin.pages.calendarios.index',[
             'calendarios'=>$calendarios,
             'convenios'=>Convenio::all()

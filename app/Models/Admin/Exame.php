@@ -8,13 +8,8 @@ class Exame extends Model
 {
     protected $fillable = ['name','codSus','price'];
 
-    public function pacientes()
-    {
-        return $this->belongsToMany('App\Models\Admin\Paciente');
-    }
-
     public function agendas()
     {
-        return $this->belongsToMany('App\Models\Admin\AgendaExame');
+        return $this->belongsToMany('App\Models\Admin\Agenda');
     }
 }

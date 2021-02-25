@@ -17,7 +17,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table class="table table-hover table-sm">
+            <table class="table table-sm">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -38,7 +38,7 @@
                                 <form action="{{ route('agenda.exames.destroy', [$agenda->id, $exame->id]) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
                                 </form>
                             </td>
                         </tr>

@@ -27,7 +27,7 @@
                             <td>
                                 {{ $exame->name }}
                             </td>
-                            <td class="float-right">
+                            <td class="btn btn-group">
                                 <a href="{{ route('exames.edit', $exame->id) }}" class="btn btn-sm btn-info">Edit</a>
                                 <a href="{{ route('exames.show', $exame->id) }}" class="btn btn-sm btn-warning">VER</a>
                             </td>

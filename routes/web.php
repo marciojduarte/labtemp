@@ -3,7 +3,8 @@
 use App\Http\Livewire\{
     FiltroConvenio
 };
-
+use App\Models\Admin\Calendario;
+use Carbon\Carbon;
 //Route::get('filtros', FiltroConvenio::class);
 
 Auth::routes();
@@ -11,16 +12,33 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/layout', function () {
+    return view('layout');
+});
 
 Route::get('/teste', function () {
-   // return App\Models\Admin\Agenda::all();
+    $mes = Carbon::now();
+    //var_dump($mes->month);
+        $calendarios = App\Models\Admin\Calendario::where('convenio_id', '1')
+                                        ->whereYear('data',now())
+                                        ->whereMonth('data',now())
+                                        ->get();
+  foreach($calendarios as $calendario){
+      echo "<br>{$calendario->data} - {$calendario->convenio->name}";
+      $agendas = App\Models\Admin\Agenda::where('calendario_id',$calendario->id)->get();
+      foreach($agendas as $agenda){
+        echo "<br>{$agenda->paciente->name}";
+      }
+  }
+
+   //$data->paciente()->get();
    //$data = App\Models\Admin\Calendario::Where('data','LIKE',"2021-07-%")->Where('convenio_id','1')->get();
-   $data = App\Models\Admin\Calendario::find('1');
+  // $data = App\Models\Admin\Calendario::find('1');
    //$agendas = $data->agendas()->get();
-   $agendas = $data->agendas()->find('6');
-   $paciente = $agendas->paciente()->get();
-    return $data;
-    $paciente;
+   //$agendas = $data->agendas()->find('6');
+   //$paciente = $agendas->paciente()->get();
+    //return $data;
+   // $paciente;
     //return App\Models\Admin\Calendario::count('data');
     // $totalPaciente = App\Models\Admin\Agenda::all();
     // $agendaExame = $totalPaciente->exame();

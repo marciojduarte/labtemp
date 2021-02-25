@@ -48,8 +48,7 @@
 
                             </td>
                             <td >
-                                {{ $agenda->exames()->id }}
-                                {{-- <h3> R$ {{ number_format($agenda->exames()->sum('price');, 2, ',', '.') }}</h3> --}}
+                                {{ $agenda->exames()->sum('price') }}
                             </td>
                         </tr>
                     @endforeach

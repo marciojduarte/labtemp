@@ -7,8 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    @foreach($paciente as $key => $value)
-        
+    @foreach($dados as $dado)
+        <ul class="list-group">
+            {{ $dado->data }} - {{ $dado->convenio->name }}
+        </ul>
     @endforeach
 </body>
 </html>

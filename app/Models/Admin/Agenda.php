@@ -8,7 +8,12 @@ class Agenda extends Model
 {
     protected $fillable = ['paciente_id','solicitante_id','convenio_id','user_id','calendario_id'];
 
-    /**Relacionamentos */
+
+    public function exames()
+    {
+        return $this->belongsToMany('App\Models\Admin\Exame');
+
+    }
      public function paciente()
      {
          return $this->belongsTo('App\Models\Admin\Paciente');
@@ -21,17 +26,12 @@ class Agenda extends Model
     {
         return $this->belongsTo('App\Models\Admin\Convenio');
     }
-     public function calendario()
+    public function calendario()
     {
         return $this->belongsTo('App\Models\Admin\Calendario');
     }
 
-    public function exames()
-    {
-        return $this->belongsToMany('App\Models\Admin\AgendaExame');
-    }
-
-    public function examesAvailable($filter = null)
+   public function examesAvailable($filter = null)
     {
         $exames = exame::whereNotIn('exames.id', function($query) {
             $query->select('agenda_exame.exame_id');

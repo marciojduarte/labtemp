@@ -22,6 +22,7 @@
                         <th>Convênio</th>
                         <th>Data</th>
                         <th>Disponívies</th>
+                        <th>Total</th>
                         <th width="50">Ações</th>
                     </tr>
                 </thead>
@@ -37,6 +38,9 @@
                             </td>
                             <td>
                                 {{ $calendario->atendimento - $calendario->limite }}
+                            </td>
+                            <td>
+
                             </td>
                             <td style="width=10px;">
                                 <div class="btn-group float-right">
