@@ -15,10 +15,10 @@ class AgendaExameTable extends Migration
     {
         Schema::create('agenda_exame', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('exame_id');
             $table->unsignedBigInteger('agenda_id');
-            $table->foreign('exame_id')->references('id')->on('exames');
+            $table->unsignedBigInteger('exame_id');
             $table->foreign('agenda_id')->references('id')->on('agendas')->onDelete('cascade');
+            $table->foreign('exame_id')->references('id')->on('exames');
             $table->timestamps();
         });
     }

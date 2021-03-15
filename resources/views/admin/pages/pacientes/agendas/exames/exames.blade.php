@@ -3,15 +3,15 @@
 @section('title', "Exames do paciente {$agenda->paciente->name}")
 
 @section('content_header')
-    <ol class="breadcrumb">
+    {{-- <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
         <li class="breadcrumb-item active"><a href="{{ route('pacientes.index') }}" class="active">Pacientes</a></li>
     </ol>
 
-    <h1>Exames do paciente <strong>{{ $agenda->paciente->name }} - {{ $agenda->convenio->name }}</strong></h1>
-
-    <a href="{{ route('agenda.exames.create', $agenda->id) }}" class="btn btn-dark">Adicionar Exames</a>
-
+    <blockquote class="blockquote text-center">
+        <p class="mb-0">Exames do paciente <strong>{{ $agenda->paciente->name }}</strong></p>
+        <footer class="blockquote-footer">{{ $agenda->convenio->name }} - {{ \Carbon\Carbon::parse($agenda->calendario->data)->format('d/m/Y')}}</footer>
+      </blockquote> --}}
 @stop
 
 @section('content')
@@ -45,22 +45,21 @@
                     @endforeach
                 </tbody>
             </table>
-
         </div>
+        <a href="{{ route('agenda.exames.create', $agenda->id) }}" class="btn btn-dark">Adicionar Exames</a>
         <div class="card-footer">
-
-        <div class="small-box bg-info" >
-            <div class="inner">
-                <h3> R$ {{ number_format($totalExames, 2, ',', '.') }}</h3>
-                <p>Total</p>
+            <div class="small-box bg-info" align ="center">
+                <div class="inner">
+                    <h3> R$ {{ number_format($agenda->exames()->sum('price'), 2, ',', '.') }}</h3>
+                    <p>Total</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                    <div class="small-box-footer">
+                        Total do Dia {{ $agenda->calendario->examesdoDia()->sum('price') }} <i class="fas fa-money-check-alt"></i>
+                    </div>
             </div>
-            <div class="icon">
-                <i class="fas fa-file-invoice-dollar"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-                Saldo Total <i class="fas fa-money-check-alt"></i>
-            </a>
-        </div>
             @if (isset($filters))
                 {!! $exames->appends($filters)->links() !!}
             @else

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Admin\Calendario;
-use App\Models\Admin\Convenio;
 use Illuminate\Http\Request;
+use App\Models\Admin\Convenio;
+use App\Models\Admin\Calendario;
+use Illuminate\Support\Facades\DB;
 
 class CalendarioController extends Controller
 {
@@ -23,11 +23,14 @@ class CalendarioController extends Controller
      */
     public function index()
     {
-        $calendarios = $this->repository->latest()->get();
-        return view('admin.pages.calendarios.index',[
-            'calendarios'=>$calendarios,
-            'convenios'=>Convenio::all()
-        ]);
+        $calendarios = $this->repository->latest('data')->get();
+
+        return view('admin.pages.calendarios.index',
+            [
+                'calendarios'=>$calendarios,
+                'convenios'=>Convenio::all()
+            ]
+        );
     }
 
     /**
@@ -63,11 +66,11 @@ class CalendarioController extends Controller
     {
         $calendario = Calendario::find($id);
         $agendas = $calendario->agendas()->get();
-       // $totalExames = $agendas->exames()->sum('price');
-        return view('admin\pages\agendas\index',[
-            'agendas'=>$agendas,
-           // 'totalExames'=>$totalExames
-        ]);
+        return view('admin.pages.agendas.index',
+            [
+                'agendas'=>$agendas,
+            ]
+        );
     }
 
     /**
@@ -115,4 +118,18 @@ class CalendarioController extends Controller
         $this->repository->find($id)->delete();
         return redirect()->route('calendarios.index');
     }
+
+    // public function examesCalendario()
+    // {
+    //     $exames = DB::table('exames')
+    //                 ->select('calendarios.data','convenios.name', DB::raw ('sum(exames.price) as Total'))
+    //                 ->join('agenda_exame', 'agenda_exame.exame_id','=','exames.id')
+    //                 ->join('agendas','agendas.id','=','agenda_exame.agenda_id')
+    //                 ->join('calendarios','calendarios.id','=', 'agendas.calendario_id')
+    //                 ->join('convenios','convenios.id','=','calendarios.convenio_id')
+    //                 ->groupBy('calendarios.data', 'convenios.name')
+
+    //                 ->get();
+    //     dd($exames);
+    // }
 }

@@ -12,4 +12,10 @@ class Exame extends Model
     {
         return $this->belongsToMany('App\Models\Admin\Agenda');
     }
+
+    public function agendamentos()
+    {
+        return $this->hasMany('App\Models\Admin\AgendaExame');
+    }
+
 }

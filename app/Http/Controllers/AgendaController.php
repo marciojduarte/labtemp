@@ -13,7 +13,6 @@ class AgendaController extends Controller
     {
         $this->repository = $agenda;
 
-       // $this->middleware(['can:agendas']);
     }
 
     /**
@@ -23,12 +22,11 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        $agendas = $this->repository->latest()
-                                         //   ->groupBy('calendario_id')
-                                            ->get();
+        $agendas = $this->repository->latest('calendario_id')->get();
 
-
-        return view('admin.pages.agendas.index', compact('agendas'));
+        return view('admin.pages.agendas.index',[
+            'agendas'=>$agendas,
+        ]);
     }
 
     /**

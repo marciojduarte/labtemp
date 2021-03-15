@@ -28,11 +28,9 @@ class AgendaExameController extends Controller
         if (!$agenda) {
             return redirect()->back();
         }
-
         $exames = $agenda->exames()->orderBy('name', 'asc')->paginate();
-        $totalExames = $agenda->exames()->sum('price');
 
-        return view('admin.pages.pacientes.agendas.exames.exames', compact('agenda', 'exames','totalExames'));
+        return view('admin.pages.pacientes.agendas.exames.exames', compact('agenda', 'exames'));
     }
 
     /**

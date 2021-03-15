@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 use App\Models\Admin\Agenda;
 
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Calendario extends Model
@@ -20,4 +21,14 @@ class Calendario extends Model
         return $this->hasMany(Agenda::class);
     }
 
+    public function scopeexamesdoDia()
+    {
+        return DB::table('exames')
+        ->join('agenda_exame','agenda_exame.exame_id', '=','exames.id')
+        ->join('agendas','agenda_exame.agenda_id','=','agendas.id')
+        ->where('agendas.calendario_id',$this->id)
+        ->select('exames.*')
+        ->get();
+
+    }
 }

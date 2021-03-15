@@ -15,12 +15,14 @@ class FiltroConvenio extends Component
     public function render()
     {
         $convenios = Convenio::all();
+        $calendarios = Calendario::all();
 
         return view('livewire.filtro-convenio', [
-            'calendarios'=> Calendario::where('convenio_id', $this->filtro)
-                            ->Where('data', '>=', Carbon::now()) //tambem pode usar  date("Y-m-d")
-                            ->whereColumn('limite', '<', 'atendimento')
-                            ->get(),
+            'calendarios'=> $calendarios,
+            // Calendario::where('convenio_id', $this->filtro)
+            //                 ->Where('data', '>=', Carbon::now()) //tambem pode usar  date("Y-m-d")
+            //                 ->whereColumn('limite', '<', 'atendimento')
+            //                 ->get(),
             'convenios' => $convenios
         ]);
     }

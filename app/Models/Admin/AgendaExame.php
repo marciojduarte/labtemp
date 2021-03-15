@@ -14,4 +14,13 @@ class AgendaExame extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
+
+    public function agenda()
+    {
+        return $this->belongsTo('App\Models\Admin\Agenda');
+    }
+    public function exame()
+     {
+         return $this->belongsTo('App\Models\Admin\Exame');
+     }
 }

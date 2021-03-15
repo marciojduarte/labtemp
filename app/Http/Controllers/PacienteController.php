@@ -63,6 +63,7 @@ class PacienteController extends Controller
         if (!$paciente = $this->repository->find($id)) {
             return redirect()->back();
         }
+        
 
         return view('admin.pages.pacientes.show', compact('paciente'));
     }

@@ -10,8 +10,6 @@
     </ol>
 
     <h1>Agendamentos</h1>
-
-
 @stop
 
 @section('content')
@@ -48,17 +46,21 @@
 
                             </td>
                             <td >
-                                {{ $agenda->exames()->sum('price') }}
+                                {{ $total = $agenda->exames()->sum('price') }}
                             </td>
                         </tr>
-                    @endforeach
+                        @endforeach
                 </tbody>
             </table>
 
         </div>
         <div class="card-footer">
+            @isset($totalExames)
+        {{ $totalExames }}
+            @endisset
         </div>
     </div>
+
 @stop
 
 @section('js')

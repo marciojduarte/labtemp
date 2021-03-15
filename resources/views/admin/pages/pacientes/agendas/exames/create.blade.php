@@ -30,12 +30,6 @@
         $('.js-exames-basic-multiple').select2({
         placeholder: 'Selecione os Exames'
         });
-        $('.js-solicitante-placeholder-single').select2({
-            placeholder: "Seleciona o Solicitante",
-            allowClear: true
-        });
     });
     </script>
-
-
 @stop
