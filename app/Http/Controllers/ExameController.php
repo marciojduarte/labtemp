@@ -13,9 +13,7 @@ class ExameController extends Controller
     {
         $this->repository = $exame;
 
-       // $this->middleware(['can:exames']);
     }
-
     /**
      * Display a listing of the resource.
      *

@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
     <div class="card">
         <div class="card-header bg-light">
                 @if (@isset($editMode))

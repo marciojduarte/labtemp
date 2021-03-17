@@ -13,30 +13,27 @@ class Agenda extends Model
     {
         return $this->belongsTo('App\Models\Admin\Calendario');
     }
+
     public function exames()
     {
         return $this->belongsToMany('App\Models\Admin\Exame', 'agenda_exame', 'agenda_id');
     }
-    public function examesAgenda()
-    {
-        return $this->belongsToMany(Exame::class)->count();
-    }
-     public function paciente()
+
+    public function paciente()
      {
          return $this->belongsTo('App\Models\Admin\Paciente');
      }
-     public function solicitante()
+
+    public function solicitante()
      {
          return $this->belongsTo('App\Models\Admin\Solicitante');
      }
-    public function convenio()
+
+     public function convenio()
     {
         return $this->belongsTo('App\Models\Admin\Convenio');
     }
-    public function agendamentos()
-    {
-        return $this->hasMany('App\Models\Admin\AgendaExame');
-    }
+
     public function examesDaAgenda()
     {
         $exames = Exame::whereIn('exames.id', function ($query){
@@ -64,18 +61,13 @@ class Agenda extends Model
     }
 
 
-   public function examesAvailable($filter = null)
+   public function examesDisponiveis()
     {
-        $exames = exame::whereNotIn('exames.id', function($query) {
+        $exames = Exame::whereNotIn('exames.id', function($query) {
             $query->select('agenda_exame.exame_id');
             $query->from('agenda_exame');
             $query->whereRaw("agenda_exame.agenda_id={$this->id}");
-        })
-        ->where(function ($queryFilter) use ($filter) {
-            if ($filter)
-                $queryFilter->where('exames.name', 'LIKE', "%{$filter}%");
-        })
-        ->paginate();
+        })->get();
 
         return $exames;
     }

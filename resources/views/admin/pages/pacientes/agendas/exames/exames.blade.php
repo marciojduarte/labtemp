@@ -3,15 +3,10 @@
 @section('title', "Exames do paciente {$agenda->paciente->name}")
 
 @section('content_header')
-    {{-- <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('pacientes.index') }}" class="active">Pacientes</a></li>
-    </ol>
-
-    <blockquote class="blockquote text-center">
-        <p class="mb-0">Exames do paciente <strong>{{ $agenda->paciente->name }}</strong></p>
-        <footer class="blockquote-footer">{{ $agenda->convenio->name }} - {{ \Carbon\Carbon::parse($agenda->calendario->data)->format('d/m/Y')}}</footer>
-      </blockquote> --}}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
+    <li class="breadcrumb-item active"><a href="{{ route('pacientes.index') }}" class="active">Pacientes</a></li>
+</ol>
 @stop
 
 @section('content')
@@ -59,13 +54,7 @@
                     <div class="small-box-footer">
                         Total do Dia {{ $agenda->calendario->examesdoDia()->sum('price') }} <i class="fas fa-money-check-alt"></i>
                     </div>
-            </div>
-            @if (isset($filters))
-                {!! $exames->appends($filters)->links() !!}
-            @else
-                {!! $exames->links() !!}
-            @endif
-        </div>
+
     </div>
 @stop
 

@@ -12,6 +12,9 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/teste', function () {
+    return view('livewire.filtro-convenio');
+});
 
 Route::get('admin/index', function () {
     return view('admin.index');

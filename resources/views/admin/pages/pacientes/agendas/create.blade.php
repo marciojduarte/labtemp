@@ -16,3 +16,24 @@
     </div>
 @endsection
 
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    @livewireStyles
+@stop
+
+
+@section('js')
+<script>
+    $(document).ready(function() {
+        $('.js-exames-basic-multiple').select2({
+        placeholder: 'Selecione os Exames'
+        });
+        $('.js-placeholder-single').select2({
+            placeholder: "Seleciona o Solicitante",
+            allowClear: true
+        });
+    });
+    </script>
+@livewireScripts
+@stop
+

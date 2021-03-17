@@ -114,8 +114,13 @@ class CalendarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $this->repository->find($id)->delete();
+    {   $calendario = $this->repository->find($id);
+        if (!count($calendario->agendas ) == 0) {
+            return redirect()
+                        ->back()
+                        ->with('info', 'Existem Agendamento nesta Data');
+        }
+        $calendario->delete();
         return redirect()->route('calendarios.index');
     }
 

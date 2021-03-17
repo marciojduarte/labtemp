@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+@include('admin.includes.alerts')
     <div class="card">
         <div class="card-body">
             <form action="{{ route('agenda.exames.store', $agenda->id) }}" class="form" method="POST">

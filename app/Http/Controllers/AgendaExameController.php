@@ -28,7 +28,7 @@ class AgendaExameController extends Controller
         if (!$agenda) {
             return redirect()->back();
         }
-        $exames = $agenda->exames()->orderBy('name', 'asc')->paginate();
+        $exames = $agenda->exames()->orderBy('name', 'asc')->get();
 
         return view('admin.pages.pacientes.agendas.exames.exames', compact('agenda', 'exames'));
     }
@@ -41,8 +41,7 @@ class AgendaExameController extends Controller
     public function create($idAgenda)
     {
         $agenda = $this->agenda->findOrFail($idAgenda);
-
-        $exames = Exame::all();
+        $exames = $agenda->examesDisponiveis();
         if (!$agenda) {
             return redirect()->back();
         }
@@ -66,11 +65,11 @@ class AgendaExameController extends Controller
             return redirect()->back();
         }
 
-        // if (!$request->exames || count($request->exames) == 0) {
-        //     return redirect()
-        //                 ->back()
-        //                 ->with('info', 'Precisa escolher pelo menos uma exame');
-        // }
+        if (!$request->exames || count($request->exames) == 0) {
+            return redirect()
+                        ->back()
+                        ->with('info', 'Precisa escolher pelo menos uma exame');
+        }
         $agenda->exames()->attach($request->exames);
         $idAgenda = $agenda->id;
         return $this->index($idAgenda);
