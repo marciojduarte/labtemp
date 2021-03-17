@@ -1,5 +1,5 @@
-<div wire:model='exames'>
-    @foreach ($exames as $exame)
-    {{ $exame->id }}
-    @endforeach
+<div>
+    <input type="text" wire:model="name">
+
+    Hi! My name is {{ $name }}
 </div>

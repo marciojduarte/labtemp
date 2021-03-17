@@ -18,7 +18,6 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-    @livewireStyles
 @stop
 
 
@@ -34,6 +33,5 @@
         });
     });
     </script>
-@livewireScripts
 @stop
 

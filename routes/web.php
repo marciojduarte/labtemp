@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/teste', function () {
-    return view('livewire.filtro-convenio');
+    return view('teste');
 });
 
 Route::get('admin/index', function () {

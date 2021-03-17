@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class CalendarioComponente extends Component
 {
+    public $name;
 
     public function render()
     {
