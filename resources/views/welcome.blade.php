@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    @livewire('calendario-componente')
+    @livewire('teste')
 @stop
 
 @section('css')

@@ -15,7 +15,8 @@ return [
     |
     */
 
-    'class_namespace' => 'App\\Http\\Livewire',
+    'class_namespace' => 'App\Http\Livewire',
+
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +43,7 @@ return [
     |
     */
 
-    'asset_url'  => 'http://localhost/labtemp/public/',
+    'asset_url'  => 'http://labtemp.test',
 
     /*
     |--------------------------------------------------------------------------

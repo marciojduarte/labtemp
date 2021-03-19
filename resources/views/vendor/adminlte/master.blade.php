@@ -38,7 +38,7 @@
 
     {{-- Livewire Styles --}}
     @if(config('adminlte.livewire'))
-        @if(app()->version() >= 7)
+        @if(app()->version() >= 6)
             @livewireStyles
         @else
             <livewire:styles />
@@ -70,7 +70,7 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
-    @livewireStyles
+
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -94,7 +94,7 @@
 
     {{-- Livewire Script --}}
     @if(config('adminlte.livewire'))
-        @if(app()->version() >= 7)
+        @if(app()->version() >= 6)
             @livewireScripts
         @else
             <livewire:scripts />
@@ -103,7 +103,7 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-    @livewireScripts
+
 </body>
 
 </html>

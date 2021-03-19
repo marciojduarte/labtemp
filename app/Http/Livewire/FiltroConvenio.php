@@ -9,14 +9,13 @@ use App\Models\Admin\Calendario;
 
 class FiltroConvenio extends Component
 {
-    public $name;
     public $filtro;
 
     public function render()
     {
         $convenios = Convenio::all();
-        $calendarios = Calendario:://where('convenio_id', $this->filtro)
-                                Where('data', '>=', Carbon::now()) //tambem pode usar  date("Y-m-d")
+        $calendarios = Calendario::where('convenio_id', $this->filtro)
+                                ->Where('data', '>=', Carbon::now()) //tambem pode usar  date("Y-m-d")
                                 ->whereColumn('limite', '<', 'atendimento')
                                 ->get();
 

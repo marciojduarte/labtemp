@@ -28,8 +28,6 @@
         placeholder: 'Selecione os Exames'
         });
         $('.js-placeholder-single').select2({
-            placeholder: "Seleciona o Solicitante",
-            allowClear: true
         });
     });
     </script>
