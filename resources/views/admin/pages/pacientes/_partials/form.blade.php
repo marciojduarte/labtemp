@@ -1,10 +1,10 @@
 @include('admin.includes.alerts')
 
 @csrf
-
+<fieldset disabled>
 <div class="form-group">
     <label>* Nome:</label>
-    <input type="text" name="name" class="form-control" placeholder="Nome do Paciente:" value="{{ $paciente->name ?? old('name') }}">
+    <input type="text" name="name" id = 'name' class="form-control" placeholder="Nome do Paciente:" value="{{ $paciente->name ?? old('name') }}">
 </div>
 <div class="form-group">
     <label>Mãe:</label>
@@ -22,6 +22,27 @@
       <small id="helpId" class="text-muted">Insira o número do cartão do SUS</small>
     </div>
 </div>
-<div class="form-group">
-    <button type="submit" class="btn btn-dark">Salvar</button>
+<fieldset>
+<div class="form-group" id="editar">
+    <button type="submit" class="fas fa-save btn btn-success" id="salvar" hidden>Salvar</button>
+    <i class="fas fa-edit btn btn-warning" id="edit" >Alterar</i>
+
 </div>
+
+
+@section('js')
+<script>
+//  $(function(){
+// $(document).on('click', '.btn', function (event) {
+// 	event.preventDefault();
+//     $(this).prev('fieldset').removeProp('disabled');
+// });
+// });
+$('#edit').click(function () {
+   $('fieldset').prop('disabled', false);
+   $('#salvar').removeAttr("hidden");
+   $('#edit').attr("hidden", "true");
+});
+</script>
+
+@stop

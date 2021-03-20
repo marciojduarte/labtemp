@@ -17,6 +17,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Nascimento</th>
                         <th width="270">Ações</th>
                     </tr>
                 </thead>
@@ -24,11 +25,12 @@
                     @foreach ($pacientes as $paciente)
                         <tr>
                             <td>
-                                {{ $paciente->name }}
+                                <a href="{{ route('pacientes.show', $paciente->id) }}">{{ $paciente->name }}</a>
+                            </td>
+                            <td>
+                                {{ \Carbon\Carbon::parse($paciente->dataNascimento)->format('d/m/Y')}}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('pacientes.show', $paciente->id) }}" class="btn btn-warning">VER</a>
                                 <a href="{{ route('paciente.agenda.index', $paciente->id) }}" class="btn btn-warning">Agendamentos</i></a>
                             </td>
                         </tr>
@@ -41,7 +43,6 @@
 
 @section('js')
 <script>
-
 $(document).ready(function() {
     $('#datatable').DataTable( {
         "ordering": false,

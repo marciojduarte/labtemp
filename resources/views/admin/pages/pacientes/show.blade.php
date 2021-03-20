@@ -21,7 +21,7 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="cadastro" role="tabpanel" aria-labelledby="cadastro-tab">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" id='pacienteform'>
                 <form action="{{ route('pacientes.update', $paciente->id) }}" class="form" method="POST">
                     @method('PUT')
 
@@ -117,3 +117,19 @@
         </div> --}}
 
 @endsection
+
+@section('js')
+<script>
+//  $(function(){
+// $(document).on('click', '.btn', function (event) {
+// 	event.preventDefault();
+//     $(this).prev('fieldset').removeProp('disabled');
+// });
+// });
+$('#pacienteform').click(function () {
+    $('fieldset').prop('disabled', false);
+})
+</script>
+
+@stop
+
