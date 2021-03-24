@@ -31,4 +31,14 @@ class Calendario extends Model
         ->get();
 
     }
+    public function scopeexamesdoMes()
+    {
+        return DB::table('exames')
+        ->join('agenda_exame','agenda_exame.exame_id', '=','exames.id')
+        ->join('agendas','agenda_exame.agenda_id','=','agendas.id')
+        ->where('agendas.calendario_id',$this->id)
+        ->select('exames.*')
+        ->get();
+
+    }
 }

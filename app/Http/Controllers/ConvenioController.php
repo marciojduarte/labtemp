@@ -6,11 +6,12 @@ use App\Models\Admin\Convenio;
 use Illuminate\Http\Request;
 
 class ConvenioController extends Controller
-{   protected $repository;
+{
+    protected $repository;
 
-    public function __construct(Convenio $exame)
+    public function __construct(Convenio $convenio)
     {
-        $this->repository = $exame;
+        $this->repository = $convenio;
 
 
     }
@@ -44,7 +45,7 @@ class ConvenioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -53,9 +54,14 @@ class ConvenioController extends Controller
      * @param  \App\Admin\Convenio  $convenio
      * @return \Illuminate\Http\Response
      */
-    public function show(Convenio $convenio)
+    public function show($id)
     {
-        //
+        $convenio = $this->repository->find($id);
+        $calendarios = $convenio->calendarios()->get();
+        return view('admin.pages.convenios.show',[
+            'convenio'=>$convenio,
+            'calendarios'=>$calendarios
+        ]);
     }
 
     /**
@@ -78,7 +84,7 @@ class ConvenioController extends Controller
      */
     public function update(Request $request, Convenio $convenio)
     {
-        //
+
     }
 
     /**

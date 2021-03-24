@@ -7,7 +7,8 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
         <li class="breadcrumb-item active"><a href="{{ route('pacientes.index') }}" class="active">Paciente</a></li>
     </ol>
-<h1>Paciente<a href="{{ route('pacientes.create') }}" class="btn btn-dark">Cadastrar</a></h1>
+<h1>Paciente</h1>
+<a href="{{ route('pacientes.create') }}" class="btn btn-dark">Cadastrar</a>
 @stop
 
 @section('content')

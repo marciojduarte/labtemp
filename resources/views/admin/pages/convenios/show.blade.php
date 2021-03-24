@@ -2,7 +2,7 @@
 
 @extends('adminlte::page')
 
-@section('title', "Pacientes do Agente")
+@section('title', "Calendário do Convenio")
 
 @section('content_header')
 
@@ -21,24 +21,26 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h1>Pacientes do Agente</h1>
+        <h1>Calendario do Convenio - {{ $convenio->name }}</h1>
     </div>
     <div class="card-body">
-        {{-- Lista de pacientes --}}
+        {{-- calendarios --}}
 <table class="table table-sm table" id="datatable">
     <thead>
         <tr>
             <th>#</th>
-            <th>Nome</th>
-            <th>Cartão Sus</th>
+            <th>Convenio</th>
+            <th>Data</th>
+            <th>Total</th>
             </tr>
     </thead>
     <tbody>
-        @forelse($pacientes as $paciente)
+        @forelse($calendarios as $calendario)
         <tr>
-            <th scope='row'>{{$paciente->id}}</th>
-            <td>{{$paciente->name}}</td>
-            <td>{{$paciente->CartaoSus}}</td>
+            <th scope='row'>{{$calendario->id}}</th>
+            <td>{{$calendario->convenio->name}}</td>
+            <td>{{ \Carbon\Carbon::parse($calendario->data)->format('d/m/Y')}}</td>
+            <td>{{ $calendario->examesdoDia()->sum('price') }}</td>
         </tr>
         @empty
         <tr>
