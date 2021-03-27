@@ -45,7 +45,7 @@
         <div class="card-footer">
             <div class="small-box bg-info" align ="center">
                 <div class="inner">
-                    <h3> R$ {{ number_format($agenda->exames()->sum('price'), 2, ',', '.') }}</h3>
+                    <h3> R$ {{ number_format($agenda->exames()->sum('exames.price'), 2, ',', '.') }}</h3>
                     <p>Total</p>
                 </div>
                 <div class="icon">
