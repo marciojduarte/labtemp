@@ -17,6 +17,9 @@
 @stop
 
 @section('content')
+
+@livewire('convenios.convenio-componente')
+
 <div class="card">
         <div class="card-header">
             <div class="row">
@@ -167,6 +170,20 @@
 
 @section('js')
 @include('admin.includes.scripts')
+<script>
+    window.addEventListener('closeModal', event => {
+        $("#modalForm").modal('hide');
+    })
+    window.addEventListener('openModal', event => {
+        $("#modalForm").modal('show');
+    })
+    window.addEventListener('openDeleteModal', event => {
+        $("#modalFormDelete").modal('show');
+    })
+    window.addEventListener('closeDeleteModal', event => {
+        $("#modalFormDelete").modal('hide');
+    })
+    </script>
 @stop
 
 

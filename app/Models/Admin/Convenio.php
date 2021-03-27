@@ -25,31 +25,23 @@ class Convenio extends Model
         return $this->hasMany('App\Models\Admin\Calendario');
     }
 
-    public function gastoMensal()
+    public function scopeexamesdoMes()
     {
-        $calendarios =  $this->calendarios()->whereMonth('data', Carbon::now());
-        return DB::table('exames')
-                            ->join('agenda_exame','agenda_exame.exame_id', '=','exames.id')
-                            ->join('agendas','agenda_exame.agenda_id','=','agendas.id')
-                            ->whereIn('agendas.calendario_id',[$calendarios])
-                            ->select('exames.*')
-                            ->get();
-    }
-
-    public function scopeexamesdoConvenio()
-    {
-        $mes =  Calendario::whereMonth('data', Carbon::now())->get();
-        return DB::table('exames')
+        return  DB::table('exames')
         ->join('agenda_exame','agenda_exame.exame_id', '=','exames.id')
         ->join('agendas','agenda_exame.agenda_id','=','agendas.id')
-        ->join('calendarios','agendas.calendario_id','=','calendarios.id')
         ->where('agendas.convenio_id',$this->id)
-        //->whereIn('calendarios.data',$mes)
-         ->where(function($query)use ($mes){
-             if ($mes!=[])
-             $query->whereIn('calendarios.id',$mes);
-         })
+        ->join('calendarios','agendas.calendario_id','=','calendarios.id')
+        ->whereMonth('calendarios.data',Carbon::now())
         ->select('exames.*')
         ->get();
     }
+    public function scopeporcentagemdoMes()
+    {
+        $porcentagem = $this->examesdoMes()->sum('price')*100 / ($this->amout/10);
+        return $porcentagem;
+    }
+
+
+
 }
