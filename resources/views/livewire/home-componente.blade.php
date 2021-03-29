@@ -1,4 +1,7 @@
-@foreach ($convenios as $convenio )
+<div>
+    @if ($convenios->count())
+
+    @foreach ($convenios as $convenio )
 
 <div>
     <div class="info-box bg-green">
@@ -19,5 +22,8 @@
 </div>
 
 @endforeach
+
+@endif
+</div>
 
 

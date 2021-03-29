@@ -15,7 +15,7 @@
         </div>
         <div class="col-auto">
           <div class="form-check mb-2">
-            <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+            <input class="form-check-input" type="checkbox" wire:model = "available" name="available">
             <label class="form-check-label" for="autoSizingCheck">
               Disponivel
             </label>

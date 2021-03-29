@@ -43,8 +43,7 @@ return [
     |
     */
 
-    'asset_url'  => 'http://labtemp.test',
-
+    'asset_url'  => 'http://127.0.0.1:8000',
     /*
     |--------------------------------------------------------------------------
     | Livewire Endpoint Middleware Group

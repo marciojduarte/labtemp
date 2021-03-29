@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Convenio extends Model
 {
-    protected $fillable = ['name','amout'];
+    protected $fillable = ['name','amout','available'];
 
     public function pacientes()
     {

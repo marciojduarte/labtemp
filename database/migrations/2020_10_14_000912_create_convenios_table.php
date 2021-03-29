@@ -17,6 +17,8 @@ class CreateConveniosTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->double('amout');
+            $table->boolean('available')->nullable()->default(false);
+           // $table->boolean('confirmed')->default(true);
             $table->timestamps();
         });
     }

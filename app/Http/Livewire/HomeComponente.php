@@ -10,7 +10,7 @@ class HomeComponente extends Component
 
     public function render()
     {
-        $convenios = Convenio::all();
+        $convenios = Convenio::where('available','1')->get();
         return view('livewire.home-componente',['convenios'=>$convenios]);
     }
 }

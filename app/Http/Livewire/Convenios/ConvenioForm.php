@@ -9,10 +9,12 @@ class ConvenioForm extends Component
 {
     public $name;
     public $amout;
+    public $available;
     public $modelId;
 
     protected $listeners = [
-        'getModelId'
+        'getModelId',
+        'forceCloseModal'
     ];
 
     public function getModelId($modelId)
@@ -22,31 +24,54 @@ class ConvenioForm extends Component
 
         $this->name = $convenio->name;
         $this->amout = $convenio->amout;
+        $this->available = $convenio->available;
 
     }
 
     public function save()
     {
+          //Data validation
+         $this->validate(
+             [
+                 'name' => 'required|min:10|max:40',
+                 'amout' => 'required',
+
+             ]
+         );
+
         $data = [
             'name'=> $this->name,
-            'amout'=>$this->amout
+            'amout'=>$this->amout,
+            'available'=>$this->available,
         ];
+
+        if($this->modelId){
+            Convenio::find($this->modelId)->update($data);
+        }
+        else{
+            Convenio::create($data);
+        }
 
         $this->dispatchBrowserEvent('closeModal');
         $this->emit('refreshParent');
         $this->cleanVars();
 
-        if($this->modelId){
-            Convenio::find($this->modelId)->update($data);
-        }else{
-            Convenio::create($data);
-        }
+
+    }
+
+    public function forceCloseModal(){
+
+        $this->cleanVars();
+        // These will reset our error bags
+        $this->resetErrorBag();
+        $this->resetValidation();
     }
 
     private function cleanVars()
     {
         $this->name = null;
         $this->amout = null;
+        $this->available = null;
         $this->modelId = null;
     }
     public function render()
