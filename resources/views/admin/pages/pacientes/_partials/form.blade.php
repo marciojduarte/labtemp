@@ -31,18 +31,11 @@
 
 
 @section('js')
-<script>
-//  $(function(){
-// $(document).on('click', '.btn', function (event) {
-// 	event.preventDefault();
-//     $(this).prev('fieldset').removeProp('disabled');
-// });
-// });
-$('#edit').click(function () {
-   $('fieldset').prop('disabled', false);
-   $('#salvar').removeAttr("hidden");
-   $('#edit').attr("hidden", "true");
-});
-</script>
-
+    <script>
+        $('#edit').click(function () {
+        $('fieldset').prop('disabled', false);
+        $('#salvar').removeAttr("hidden");
+        $('#edit').attr("hidden", "true");
+        });
+    </script>
 @stop

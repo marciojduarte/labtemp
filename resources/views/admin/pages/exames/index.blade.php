@@ -14,7 +14,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table class="table table-sm" id="datatable">
+            <table class="table-striped table-sm" id="datatable">
                 <thead>
                     <tr>
                         <th>Nome</th>

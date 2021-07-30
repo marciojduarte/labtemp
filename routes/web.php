@@ -1,17 +1,11 @@
 <?php
 
-use App\Http\Livewire\{
-    FiltroConvenio
-};
-use App\Models\Admin\Calendario;
-use Carbon\Carbon;
-//Route::get('filtros', FiltroConvenio::class);
 
 Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 Route::get('/teste', function () {
     return view('teste');
 });

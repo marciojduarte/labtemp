@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalForm">
-                Adicionar Convenio
+                Adicionar Convênio
             </button>
 
                 <!-- Modal Form-->
@@ -9,7 +9,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Adicionar Convenio</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Convênio</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -45,19 +45,19 @@
     </div>
     <div class="card-body">
         @if ($convenios->count())
-      <table class="table table-striped">
+      <table class="table table-striped table-sm">
           <thead>
               <th>ID</th>
               <th>Nome</th>
               <th>Valor da Cota Anual</th>
-              <th width="30%">Actions</th>
+              <th width="30%">Ações</th>
           </thead>
           <tbody>
               @foreach ($convenios as $convenio)
                   <tr>
                       <td>{{$convenio->id}}</td>
                       <td>{{ $convenio->name}}</td>
-                      <td>{{ $convenio->amout }}</td>
+                      <td>{{ number_format($convenio->amout, 2, ',', '.') }}</td>
                       <td>
                           <button wire:click="selectedItem({{ $convenio->id }}, 'update')" class="btn btn-sm btn-success">Atualizar</button>
                           <button wire:click="selectedItem({{ $convenio->id }},'delete')" class="btn btn-sm btn-danger">Apagar</button>

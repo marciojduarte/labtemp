@@ -35,7 +35,7 @@ class ConvenioComponente extends Component
     public function render()
     {
         return view('livewire.convenios.convenio-componente',[
-            'convenios'=>Convenio::paginate(3)
+            'convenios'=>Convenio::paginate()
         ]);
     }
 }

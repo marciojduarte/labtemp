@@ -46,7 +46,7 @@
 
                             </td>
                             <td >
-                                {{ $total = $agenda->exames()->sum('exames.price') }}
+                                R$ {{ number_format($total = $agenda->exames()->sum('exames.price'), 2, ',', '.') }}
                             </td>
                         </tr>
                         @endforeach

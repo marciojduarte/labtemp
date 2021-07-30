@@ -19,7 +19,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>Nascimento</th>
-                        <th width="270">Ações</th>
+                        <th style="width: 40px">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,8 +31,10 @@
                             <td>
                                 {{ \Carbon\Carbon::parse($paciente->dataNascimento)->format('d/m/Y')}}
                             </td>
-                            <td style="width=10px;">
-                                <a href="{{ route('paciente.agenda.index', $paciente->id) }}" class="btn btn-warning">Agendamentos</i></a>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                    <a href="{{ route('paciente.agenda.index', $paciente->id) }}" class="btn btn-warning"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -43,14 +45,5 @@
 @stop
 
 @section('js')
-<script>
-$(document).ready(function() {
-    $('#datatable').DataTable( {
-        "ordering": false,
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese-Brasil.json"
-        }
-    } );
-} );
-</script>
+@include('admin.pages.componetes.datatable')
 @stop

@@ -3,7 +3,7 @@
 @section('title', "Calendário")
 @section('content_header')
     <h1>Calendário</h1>
-    <a href="{{ route('calendarios.create')}}" class="btn btn-dark">Nova Data</a>
+    
 @stop
 
 @section('content')

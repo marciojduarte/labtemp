@@ -9,7 +9,7 @@
             </div>
             <div class="card-body">
             @foreach($calendario->agendas as $agenda)
-                <p class="card-text">{{ $agenda->paciente->name }} - {{ $agenda->exames()->sum('price') }}</p>
+                <p class="card-text">{{ $agenda->paciente->name }} - x{{ number_format($agenda->exames()->sum('price'), 2, ',', '.') }}</p>
             @endforeach
             </div>
 
